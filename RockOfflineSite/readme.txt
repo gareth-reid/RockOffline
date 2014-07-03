@@ -21,6 +21,6 @@ Add the attributes the form you want to use offline.
 	b. set dataidval to an id -something like blah-ENTITYID, just needs to be unique so you can edit multiple
 	!!would prefer data-id-val but most mvc form helpers dont allow this
 
-<form class="persist-local" data-id-val="consent-form-@Model.Id">
+<form class="persist-local" dataidval="consent-form-@Model.Id">
 
 

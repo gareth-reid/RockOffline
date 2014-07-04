@@ -11,6 +11,7 @@
     });
     $('.persist-local').submit(function () {
         if (navigator.onLine) {
+            localStorage.removeItem(form.attr('dataidval'));
             return true; //submit
         }
         return false;

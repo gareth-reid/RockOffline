@@ -1,14 +1,12 @@
-﻿/*
-
-depends on: 
+﻿/// <reference path="./jquery.d.ts" />
+/*
+depends on:
 HTML 5 storage capability
 Browsers supported: IE 8+ and current version of Firefox, Safari, Opera and Chrome
 jQuery 1.5 : tested in this version only, try it out on lower versions if you like
 json2.js : Douglas Crockford GitHUB -> https://github.com/douglascrockford/JSON-js
-
 instance methods:
-$('form').dumbFormState('remove'); // removes all data associated with the forms matching the selector
-
+$('form').rockOffline('remove'); // removes all data associated with the forms matching the selector
 */
 (function ($, JSON, w) {
     function removeData(dbType) {
@@ -90,8 +88,7 @@ $('form').dumbFormState('remove'); // removes all data associated with the forms
                 persistPasswords: false,
                 skipSelector: null,
                 persistLocal: false,
-                autoPersist: true,
-                id: ''
+                autoPersist: true
             };
             if (arguments.length > 0 && $.isPlainObject(arguments[0])) {
                 config = $.extend(config, arguments[0]);
@@ -103,10 +100,9 @@ $('form').dumbFormState('remove'); // removes all data associated with the forms
             var $this = $(this);
             $this.data('dumbFormState-index', $this.index());
         });
-
         $self.each(function () {
             var $this = $(this),
-            key = config.id,
+            key = 'dumbFormState-' + window.location.pathname + '-' + $this.data('dumbFormState-index'),
             dbObj = db[key], persistTimeout = null;
             if ($this[0].nodeName !== 'FORM') {
                 throw 'dumbFormState - must be called on form elements only';

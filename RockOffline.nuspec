@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>RockOffline</id>
-    <version>0.9.1</version>
+    <version>0.9.4</version>
     <title>Rock Offline</title>
     <authors>Gareth Reid</authors>
     <owners>Gareth Reid</owners>  

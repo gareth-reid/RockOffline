@@ -4,6 +4,7 @@ Usage: This will save to local cache every time the form is submited.
 	   When the form is submitted and it is online it will hit the action specified in the form declaration
 
 Steps:
+**Requires jquery
 1. Include the two files:
 
 bundles.Add(new ScriptBundle("~/Scripts/RockOffline")
@@ -11,9 +12,9 @@ bundles.Add(new ScriptBundle("~/Scripts/RockOffline")
       .Include("~/Scripts/RockOfflineInit.js"));
 
 	  OR
-
-	  <script src="~/Scripts/RockOffline.js" />
-	  <script src="~/Scripts/RockOfflineInit.js" />
+	  	     
+        <script src="~/Scripts/RockOffline.js" type="text/javascript"></script>
+        <script src="~/Scripts/RockOfflineInit.js" type="text/javascript"></script>
 
 2. 
 Add the attributes the form you want to use offline.
@@ -21,6 +22,6 @@ Add the attributes the form you want to use offline.
 	b. set dataidval to an id -something like blah-ENTITYID, just needs to be unique so you can edit multiple
 	!!would prefer data-id-val but most mvc form helpers dont allow this
 
-<form class="persist-local" data-id-val="consent-form-@Model.Id">
+<form class="persist-local" dataidval="consent-form-@Model.Id">
 
 

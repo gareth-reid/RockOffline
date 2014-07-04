@@ -1,0 +1,48 @@
+﻿*.suo
+*.user
+_ReSharper.*
+*/bin/*
+*/obj/*
+*/bin/debug/*
+*/bin/release/*
+
+*/obj/debug/*
+*/obj/release/*
+
+*.vspscc
+
+#ignore thumbnails created by windows
+Thumbs.db
+#Ignore files build by Visual Studio
+*.obj
+*.exe
+!References/chromedriver.exe #Required to run Acceptance tests via Selenium in Chrome
+!References/IEDriverServer.exe #Required to run Acceptance tests via Selenium in Internet Explorer
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+[Bb]in
+[Dd]ebug*/
+*.lib
+*.sbr
+obj/
+[Rr]elease*/
+_ReSharper*/
+*.ncrunchproject
+[Tt]est[Rr]esult*
+HealthNetwork.ncrunchsolution
+*.dbmdl
+*.orig
+*.schemaview

@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "List";
+}
+
+<h2>Add Diary Entry</h2>
+
+<form action="@Url.Action("Save", "Offline")" class="persist-local offset3 sigPad" dataidval="PersonEdit-1" id="diary-edit" method="POST">
+    <div class="row-fluid">
+        <div class="span4">Title:<input type="text" id="Title" name="Title" /></div>
+        <div class="span4">Name:<input type="text" id="Name" name="Name" /></div>
+    </div>
+    <div class="row-fluid">
+        <p class="drawItDesc">Draw your signature</p>
+        <ul class="sigNav">
+            <li class="drawIt"><a href="#draw-it">Draw It</a></li>
+            <li class="clearButton"><a href="#clear">Clear</a></li>
+        </ul>
+        <div class="sig sigWrapper">
+            <div class="typed"></div>
+            <canvas class="pad" width="198" height="55"></canvas>
+            <input type="hidden" name="output" class="output">
+        </div>
+    </div>
+</form>
+ <div class="fluid-row">
+        <div class="span8">
+            <input type="submit" class="btn btn-info" value="Save"/>
+        </div>
+    </div>

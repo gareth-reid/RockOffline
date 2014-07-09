@@ -1,0 +1,24 @@
+﻿@using System.Configuration
+CACHE MANIFEST
+@{
+    Layout = null; 
+    Response.ContentType = "text/cache-manifest";
+}
+#v4
+@Url.Action("Edit", "Offline")
+@Url.Action("List", "Offline")
+@Url.Action("Index", "Home")
+
+@Url.Content("~/Images/heroAccent.png")
+@Url.Content("~/Images/accent.png")
+@Url.Content("~/Content/pen.cur")
+
+CACHE:
+@BundleTable.Bundles.ResolveBundleUrl("~/bundles/jquery")
+@BundleTable.Bundles.ResolveBundleUrl("~/bundles/bootstrap")
+@BundleTable.Bundles.ResolveBundleUrl("~/bundles/offline")
+@BundleTable.Bundles.ResolveBundleUrl("~/Content/css")
+@BundleTable.Bundles.ResolveBundleUrl("~/bundles/modernizr")
+@BundleTable.Bundles.ResolveBundleUrl("~/bundles/signature")
+
+

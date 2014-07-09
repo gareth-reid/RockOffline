@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>RockOffline</id>
-    <version>0.9.4.2</version>
+    <version>0.9.4.8</version>
     <title>Rock Offline</title>
     <authors>Gareth Reid</authors>
     <owners>Gareth Reid</owners>  
@@ -22,7 +22,7 @@
     </frameworkAssemblies>
   </metadata>
   <files>
-    <file src="RockOfflineSite\Content\*.*" target="content\Scripts\" />
-    <file src="RockOfflineSite\readme.txt" target="" />
+    <file src="RockOfflinePackage\Scripts\*.*" target="content\Scripts\" />
+    <file src="RockOfflinePackage\readme.txt" target="" />
   </files>
 </package>

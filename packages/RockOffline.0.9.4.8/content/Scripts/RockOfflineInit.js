@@ -3,7 +3,7 @@
 $(document).ready(function () {
     $('.persist-local').each(function () {
         var $this = $(this);
-        $this.dumbFormState({
+        $this.rockOffline({
             persistPasswords: false, // default is false, recommended to NOT do this
             persistLocal: true, // default is false, persists in sessionStorage or to localStorage
             skipSelector: null, // takes jQuery selector of items you DO NOT want to persist

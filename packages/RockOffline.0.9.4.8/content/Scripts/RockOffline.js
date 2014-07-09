@@ -16,13 +16,13 @@ $('form').rockOffline('remove'); // removes all data associated with the forms m
         }
         db = (dbType === 'local') ? w.localStorage : w.sessionStorage;
         for (var key in db) {
-            if (key.indexOf('dumbFormState-') === 0) { keys.push(key); }
+            if (key.indexOf('rockOffline-') === 0) { keys.push(key); }
         }
         for (var i = 0; i < keys.length; i++) {
             delete db[keys[i]];
         }
     };
-    $.fn.dumbFormState = function () {
+    $.fn.rockOffline = function () {
         var $self = $(this), config, formKey,
         nonCheckableSelector = 'input[type="text"],input[type="password"],input[type="email"],input[type="hidden"],input[type="url"],input[type="tel"],input[type="search"],textarea,select',
         checkableSelector = 'input[type="checkbox"],input[type="radio"]',
@@ -71,8 +71,8 @@ $('form').rockOffline('remove'); // removes all data associated with the forms m
         if (typeof (w.sessionStorage) === 'undefined' || typeof (w.localStorage) === 'undefined') {
             return $self;
         }
-        if ($self.data('dumbFormState-defined')) {
-            config = $self.data('dumbFormState-config');
+        if ($self.data('rockOffline-defined')) {
+            config = $self.data('rockOffline-config');
             if (arguments.length > 0 && $.isPlainObject(arguments[0])) {
                 config = $.extend(config, arguments[0]);
                 return $self;
@@ -83,32 +83,33 @@ $('form').rockOffline('remove'); // removes all data associated with the forms m
             }
 
         } else {
-            $self.data('dumbFormState-defined', true);
+            $self.data('rockOffline-defined', true);
             config = {
                 persistPasswords: false,
                 skipSelector: null,
                 persistLocal: false,
-                autoPersist: true
+                autoPersist: true,
+                id: ''
             };
             if (arguments.length > 0 && $.isPlainObject(arguments[0])) {
                 config = $.extend(config, arguments[0]);
             }
-            $self.data('dumbFormState-config', config);
+            $self.data('rockOffline-config', config);
         }
         db = config.persistLocal ? w.localStorage : w.sessionStorage;
         $('form').each(function () {
             var $this = $(this);
-            $this.data('dumbFormState-index', $this.index());
+            $this.data('rockOffline-index', $this.index());
         });
         $self.each(function () {
             var $this = $(this),
-            key = 'dumbFormState-' + window.location.pathname + '-' + $this.data('dumbFormState-index'),
+                key = config.id;//'rockOffline-' + window.location.pathname + '-' + $this.data('rockOffline-index'),
             dbObj = db[key], persistTimeout = null;
             if ($this[0].nodeName !== 'FORM') {
-                throw 'dumbFormState - must be called on form elements only';
+                throw 'rockOffline - must be called on form elements only';
             }
             if (remove) {
-                $this.unbind('blur.dumbFormState focus.dumbFormState click.dumbFormState keyup.dumbFormState submit.dumbFormState change.dumbFormState');
+                $this.unbind('blur.rockOffline focus.rockOffline click.rockOffline keyup.rockOffline submit.rockOffline change.rockOffline');
                 delete db[key];
                 return;
             }
@@ -125,11 +126,11 @@ $('form').rockOffline('remove'); // removes all data associated with the forms m
                     });
                 }
             }
-            $this.bind('submit.dumbFormState', function (ev) {
+            $this.bind('submit.rockOffline', function (ev) {
                 persist($this, key);
             });
             if (config.autoPersist) {
-                $this.bind('blur.dumbFormState focus.dumbFormState click.dumbFormState keyup.dumbFormState change.dumbFormState', function () {
+                $this.bind('blur.rockOffline focus.rockOffline click.rockOffline keyup.rockOffline change.rockOffline', function () {
                     if (persistTimeout !== null) {
                         window.clearTimeout(persistTimeout);
                         persistTimeout = null;
@@ -140,14 +141,14 @@ $('form').rockOffline('remove'); // removes all data associated with the forms m
         });
         return $self;
     };
-    $.fn.dumbFormState.removeSession = function () {
+    $.fn.rockOffline.removeSession = function () {
         removeData('session');
     };
-    $.fn.dumbFormState.removeLocal = function () {
+    $.fn.rockOffline.removeLocal = function () {
         removeData('local');
     };
-    $.fn.dumbFormState.removeAll = function () {
-        $.fn.dumbFormState.removeSession();
-        $.fn.dumbFormState.removeLocal();
+    $.fn.rockOffline.removeAll = function () {
+        $.fn.rockOffline.removeSession();
+        $.fn.rockOffline.removeLocal();
     };
 })(jQuery, JSON, window);
